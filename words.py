@@ -2,6 +2,7 @@ numberOfChars = 0
 numberOfWords = 0
 words = {}
 orderedWords = []
+breakLineChars = ["\n","\r\n","\r"]
 
 def addWord(word):
   if word in words:
@@ -27,7 +28,8 @@ with open("texto.txt", "r") as file:
   text = file.read()
   word = ""
   for char in text:
-    numberOfChars += 1
+    if char not in breakLineChars:
+      numberOfChars += 1
     if char.isspace():
       if word != "":
         addWord(word)
